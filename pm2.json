@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "name": "http_api",
+            "script": "api/server.ts",
+            "watch": true
+        },
+        {
+            "name": "jobs",
+            "script": "jobs/index.ts",
+            "watch": true
+        }
+    ]
+}

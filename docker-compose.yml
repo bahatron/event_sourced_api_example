@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+    app:
+        build:
+            context: ./
+        depends_on:
+            - stream
+        volumes:
+            - ./:/app
+        ports:
+            - 5001:5001
+            - 9229:9229
+        environment:
+            - NATS_URL=nats://stream:4222
+
+    stream:
+        image: nats-streaming
+        ports:
+            - 8222:8222
+
+    mongo:
+        image: mongo
+        ports:
+            - 27017:27017
+        volumes:
+            - ./config/mongoSetup.js:/docker-entrypoint-initdb.d/mongoSetup.js
