@@ -1,8 +1,7 @@
 import * as $queryListing from "../use_cases/query.mocha";
 import { expect } from "chai";
-import $axios from "../../adapters/axios";
-import $env from "../../adapters/env";
-import $logger from "../../services/logger";
+import $axios from "../../src/adapters/axios";
+import $env from "../../src/adapters/env";
 
 const API_ADDRESS = $env.get("TEST_API_URL", "http://localhost:5001");
 
@@ -28,7 +27,8 @@ describe("find records endpoint", () => {
     it("returns a list of records matching the query params", async () => {
         let records = await $queryListing.validArray();
 
-        let response: any[] = (await $axios.get(`${API_ADDRESS}?rick=sanchez`)).data;
+        let response: any[] = (await $axios.get(`${API_ADDRESS}?rick=sanchez`))
+            .data;
 
         expect(response.length).to.equal(records.length);
 

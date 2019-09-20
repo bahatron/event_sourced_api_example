@@ -1,0 +1,14 @@
+{
+    "apps": [
+        {
+            "name": "http_api",
+            "script": "dist/api/server.js",
+            "exec_mode": "cluster",
+            "instances": "max"
+        },
+        {
+            "name": "jobs",
+            "script": "dist/jobs/index.js"
+        }
+    ]
+}

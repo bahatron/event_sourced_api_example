@@ -1,6 +1,6 @@
-import $recordCreated from "../../domain/models/record_created";
-import $record from "../../domain/models/record";
-import $mongo from "../../adapters/mongo";
+import $recordCreated from "../../src/domain/models/record_created";
+import $record from "../../src/domain/models/record";
+import $mongo from "../../src/adapters/mongo";
 import $assertions from "../assertions";
 
 describe("on 'record_created' event", () => {

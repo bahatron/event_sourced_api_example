@@ -1,18 +1,14 @@
 # Event sourced REST api example
 
-> An example of a REST api using even sourcing
+An example of a REST api using even sourcing
 
-## Install
+## Getting Started
 
-install dependencies
-`npm i`
-
-spin up containers
-`docker-compose up -d`
+- start application dev server `docker-compose up -d`
 
 an http server will start listening to port 5001!
 
 ## Tests
 
-`docker-compose exec app bash`
-`npm run test`
+ - log into application container `docker-compose exec app bash`
+ - run tests `npm run test`

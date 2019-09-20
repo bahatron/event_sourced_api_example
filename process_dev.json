@@ -2,12 +2,12 @@
     "apps": [
         {
             "name": "http_api",
-            "script": "api/server.ts",
+            "script": "dist/api/server.js",
             "watch": true
         },
         {
             "name": "jobs",
-            "script": "jobs/index.ts",
+            "script": "dist/jobs/index.js",
             "watch": true
         }
     ]

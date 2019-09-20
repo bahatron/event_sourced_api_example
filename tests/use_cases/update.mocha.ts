@@ -1,7 +1,7 @@
 import { expect } from "chai";
-import $nats from "../../adapters/nats";
+import $nats from "../../src/adapters/nats";
 import { Message, Stan, Subscription } from "node-nats-streaming";
-import $domain from "../../domain";
+import $domain from "../../src/domain";
 import { validRecord } from "./query.mocha";
 
 let $conn: Stan;
@@ -10,7 +10,7 @@ let $sub: Subscription;
 describe("USE CASE: update record", () => {
     it("will emit a valid record_updated event", async () => {
         const PAYLOAD = {
-            foo: "bar"
+            foo: "bar",
         };
 
         const EVENT_SCHEMA = ["old_value", "new_value"];

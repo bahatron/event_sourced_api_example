@@ -4,7 +4,8 @@ import $env from "./env";
 const url = $env.get("MONGO_URL", "mongodb://mongo:27017");
 
 const options: MongoClientOptions = {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 };
 
 const client: Promise<MongoClient> = new Promise((resolve, reject) => {
@@ -18,9 +19,9 @@ const client: Promise<MongoClient> = new Promise((resolve, reject) => {
 });
 
 const $mongo = {
-    client: async (db: string = "records"): Promise<Db> => {
+    client: async (db: string = "test"): Promise<Db> => {
         return (await client).db(db);
-    }
+    },
 };
 
 export default $mongo;

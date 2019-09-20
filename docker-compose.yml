@@ -5,16 +5,18 @@ services:
         build:
             context: ./
         depends_on:
-            - stream
+            - stan
         volumes:
             - ./:/app
+            - /app/node_modules
         ports:
             - 5001:5001
             - 9229:9229
         environment:
-            - NATS_URL=nats://stream:4222
+            - NATS_URL=nats://stan:4222
+        command: npm run dev
 
-    stream:
+    stan:
         image: nats-streaming
         ports:
             - 8222:8222
@@ -23,5 +25,3 @@ services:
         image: mongo
         ports:
             - 27017:27017
-        volumes:
-            - ./config/mongoSetup.js:/docker-entrypoint-initdb.d/mongoSetup.js

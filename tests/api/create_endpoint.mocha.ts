@@ -1,11 +1,11 @@
 import { expect } from "chai";
-import $axios from "../../adapters/axios";
-import $nats from "../../adapters/nats";
+import $axios from "../../src/adapters/axios";
+import $nats from "../../src/adapters/nats";
 import $assertions from "../assertions";
 import { Message, Stan, Subscription } from "node-nats-streaming";
-import $env from "../../adapters/env";
+import $env from "../../src/adapters/env";
 import { AxiosResponse } from "axios";
-import { Record } from "../../domain/models/record";
+import { Record } from "../../src/domain/models/record";
 
 const API_ADDRESS = $env.get("TEST_API_URL", "http://localhost:5001");
 
@@ -23,7 +23,11 @@ describe("create endpoint", () => {
             const eventData = JSON.parse(<string>msg.getData());
 
             Object.keys(eventData.data).forEach(key =>
-                $assertions.testObjectProperty(eventData.data, key, response.data)
+                $assertions.testObjectProperty(
+                    eventData.data,
+                    key,
+                    response.data
+                )
             );
         });
 
@@ -41,7 +45,7 @@ let $sub: Subscription;
 before(() => {
     return new Promise(async resolve => {
         $conn = await $nats.connect("create_listing_endpoint_test");
-        $sub = await $conn.subscribe("property_listing_uk_created");
+        $sub = await $conn.subscribe("record_created");
 
         resolve();
     });

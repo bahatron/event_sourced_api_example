@@ -1,31 +1,29 @@
-import $mongo from "../../adapters/mongo";
-import $domain from "../../domain";
+import $mongo from "../../src/adapters/mongo";
+import $domain from "../../src/domain";
 import $assertions from "../assertions";
 import { expect } from "chai";
-import moment = require("moment");
-import $logger from "../../services/logger";
 
 const VALID_RECORD = {
-    uid: "1234567"
+    uid: "1234567",
 };
 
 const FIND_FIXTURES = [
     {
         uid: "1234567",
-        rick: "sanchez"
+        rick: "sanchez",
     },
     {
         uid: "12345678",
-        rick: "sanchez"
+        rick: "sanchez",
     },
     {
         uid: "12345679",
-        rick: "sanchez"
+        rick: "sanchez",
     },
     {
         uid: "12345670",
-        rick: "sanchez"
-    }
+        rick: "sanchez",
+    },
 ];
 
 export async function validRecord() {
